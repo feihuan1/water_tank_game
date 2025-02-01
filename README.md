@@ -11,5 +11,8 @@ Current version of code is ugly, need u to re-factor before submit
 computer AI could be much more powerful if you want to improve it
 
 hint:
-Try to implement Minmax Algorism in computer_play function
+Try to search for Minmax Algorism and implement in computer_play function
+
+suggestions:
+Define the Game State -> Define Possible Actions -> Implement the Minimax Algorithm -> Implement AI Move Selection -> Define Helper Functions
 ```
