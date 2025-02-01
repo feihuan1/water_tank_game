@@ -62,20 +62,20 @@ def deal_cards(water_cards_pile, power_cards_pile):
     if len(water_cards_pile) < 6 or len(power_cards_pile) < 4: 
         print("not enough card")
         return
-    Player_hand =[]
+    player_hand =[]
     computer_hand =[]
     for _ in range(3):
-        Player_hand.append(water_cards_pile.pop(0))
+        player_hand.append(water_cards_pile.pop(0))
         computer_hand.append(water_cards_pile.pop(0))
     
     for _ in range(2):
-        Player_hand.append(power_cards_pile.pop(0))
+        player_hand.append(power_cards_pile.pop(0))
         computer_hand.append(power_cards_pile.pop(0))
 
-    arrange_cards(Player_hand)
+    arrange_cards(player_hand)
     arrange_cards(computer_hand)
 
-    return (Player_hand, computer_hand)
+    return (player_hand, computer_hand)
     
 # apply over flow base on input int, return a new int
 #tanklevel=apply_overflow(tank_level)
@@ -256,8 +256,8 @@ def computer_play(computer_tank, computer_cards, water_cards_pile, power_cards_p
 
 
 def main():
-    # print(game_instruction)
-    # input("Press Enter to start the game")
+    print(game_instruction)
+    input("Press Enter to start the game")
     player_tank, computer_tank = 0, 0
     (water_pile, power_pile) = setup_cards()
     (player_hand, computer_hand) = deal_cards(water_pile, power_pile)
@@ -267,7 +267,7 @@ def main():
 
     winner = ''
 
-    while(not winner):
+    while(True):
         if(not len(water_pile)):
             water_pile[:] = setup_water_cards()
         if(not len(power_pile)):
@@ -279,6 +279,8 @@ def main():
             winner = "Player"
         elif 75 <= computer_tank <= 85: 
             winner = "Computer"
+        if winner:
+            break
 
         (player_tank, computer_tank) = computer_play(computer_tank,computer_hand,water_pile, power_pile,player_tank) if is_player_first else human_play(player_tank,player_hand,water_pile,power_pile,computer_tank)
 
@@ -286,7 +288,8 @@ def main():
             winner = "Player"
         elif 75 <= computer_tank <= 85: 
             winner = "Computer"
-    
+        if winner:
+            break
     print(f"Player: {player_tank} vs. Computer: {computer_tank}")
     print(f"\n****Winner is: {winner}!!!****\n\n")
     restart = input("Would you like to start over?\nEnter 'Y' to start over\nEnter anything else to quit game.")
