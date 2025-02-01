@@ -274,6 +274,11 @@ def main():
             power_pile[:] = setup_power_cards()
 
         (player_tank, computer_tank) = human_play(player_tank,player_hand,water_pile,power_pile,computer_tank) if is_player_first else computer_play(computer_tank,computer_hand,water_pile, power_pile,player_tank)
+        
+        if 75 <= player_tank <= 85: 
+            winner = "Player"
+        elif 75 <= computer_tank <= 85: 
+            winner = "Computer"
 
         (player_tank, computer_tank) = computer_play(computer_tank,computer_hand,water_pile, power_pile,player_tank) if is_player_first else human_play(player_tank,player_hand,water_pile,power_pile,computer_tank)
 
